@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import spinner from './spinner.svg';
 import NewsButton from './NewsButton'
-
+const url = `${process.env.PUBLIC_URL}/news`
 class Product extends Component {
   constructor(props) {
     super(props);
@@ -28,14 +28,13 @@ class Product extends Component {
   getNews() {
     if(this.state.loading) return;
     this.setState({loading: true}) 
-    fetch('//localhost:3000/news?q=Trump&limit=10')
+    fetch(`${url}?q=Playmobil&limit=10`)
       .then(response => response.json())
       .then(data => {
         this.setState({news: data.documents, loading: false, selected: data.selected || {}});
       });
   }
   setNews() {
-    const url = '//localhost:3000/news'
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     const request = new Request(url, {

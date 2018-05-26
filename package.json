@@ -2,6 +2,7 @@
   "name": "media-ai-hackathon",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://media-ai-hackathon.herokuapp.com/",
   "dependencies": {
     "date-fns": "^1.29.0",
     "react": "^16.4.0",
