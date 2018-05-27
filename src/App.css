@@ -142,3 +142,8 @@ body {
 .badge-likes img {
   width: 1em;
 }
+
+.input-box {
+  display: inline-block;
+  width: auto;
+}

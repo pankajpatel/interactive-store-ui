@@ -14,6 +14,7 @@ class Product extends Component {
       loading: false,
       selected: {},
       query: 'Playmobil',
+      limit: 10,
     };
     this.getNews = this.getNews.bind(this);
     this.setNews = this.setNews.bind(this);
@@ -34,9 +35,15 @@ class Product extends Component {
   }
 
   getNews() {
-    if (this.state.loading) return;
+    const {
+      loading,
+      query,
+      limit,
+    } = this.state;
+
+    if (loading) return;
     this.setState({ loading: true });
-    fetch(`${url}?q=${this.state.query}&limit=10`)
+    fetch(`${url}?q=${query}&limit=${limit}`)
       .then(response => response.json())
       .then(data => {
         this.setState({ news: data.documents, loading: false, selected: data.selected || {} });
@@ -56,8 +63,11 @@ class Product extends Component {
       .then(response => response.json())
       .then(console.log);
   }
+  handleLimitChange = (e) => {
+    this.setState({ limit: e.target.value });
+  };
 
-  handleChange = (e) => {
+  handleQueryChange = (e) => {
     this.setState({ query: e.target.value });
   };
 
@@ -68,27 +78,44 @@ class Product extends Component {
   };
 
   render() {
+    const {
+      limit,
+      query,
+      loading,
+      selected,
+      news,
+    } = this.state;
+
     return (<div>
         <div
           className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
           <h1 className="h2">News</h1>
           <div className="btn-toolbar mb-2 mb-md-0">
+            <label for="limit">Limit: </label>
             <input
-              value={this.state.query}
-              onChange={this.handleChange}
+              className="form-control input-box"
+              value={limit}
+              onChange={this.handleLimitChange}
+              id="limit"
+              type="number"
+            />
+            <input
+              className="form-control input-box"
+              value={query}
+              onChange={this.handleQueryChange}
               onKeyPress={this.handleKeyPress}
               type="text"
             />
             <button
               onClick={this.getNews}
               className="btn btn-sm btn-outline-secondary"
-              disabled={this.state.loading}>Refresh
+              disabled={loading}>Refresh
             </button>
             &nbsp;
             <button
               onClick={this.setNews}
               className="btn btn-sm btn-outline-success"
-              disabled={this.state.loading || Object.keys(this.state.selected).length === 0}>Save
+              disabled={loading || Object.keys(selected).length === 0}>Save
             </button>
           </div>
         </div>
@@ -97,11 +124,11 @@ class Product extends Component {
             <h4 className="h4">Suggestions</h4>
             <div className="list-group">
               {
-                this.state.loading ? <center><img src={spinner} alt=''/></center> :
-                  this.state.news.map(news =>
+                loading ? <center><img src={spinner} alt=''/></center> :
+                  news.map(news =>
                     <NewsButton
                       key={news.id} news={news}
-                      active={this.state.selected[news.id]}
+                      active={selected[news.id]}
                       click={this.pickNews.bind(this, news)}
                     />)
               }
@@ -111,12 +138,12 @@ class Product extends Component {
             <h4 className="h4">Selected</h4>
             <div className="list-group">
               {
-                Object.keys(this.state.selected).map(k =>
+                Object.keys(selected).map(k =>
                   <NewsButton
                     key={k}
-                    news={this.state.selected[k]}
-                    active={this.state.selected[this.state.selected[k].id]}
-                    click={this.pickNews.bind(this, this.state.selected[k])}
+                    news={selected[k]}
+                    active={selected[selected[k].id]}
+                    click={this.pickNews.bind(this, selected[k])}
                   />)
               }
             </div>
