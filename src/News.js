@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import spinner from './spinner.svg';
 import NewsButton from './NewsButton'
-const url = `https://media-ai-hackathon.herokuapp.com/news`
+const url = process.env.NODE_ENV === 'production'
+  ? `https://media-ai-hackathon.herokuapp.com/news`
+  : 'http://localhost:3000/news';
 class Product extends Component {
   constructor(props) {
     super(props);
