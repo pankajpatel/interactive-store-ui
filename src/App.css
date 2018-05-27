@@ -135,9 +135,10 @@ body {
 .badge-likes {
   border: 1px solid #aaa;
   border-radius: 0.25em;
-  padding: 0.25em;
+  padding: 0.25em 0.5em;
   color: #e1245e;
+  font-size: 0.7em;
 }
 .badge-likes img {
-
+  width: 1em;
 }
