@@ -146,4 +146,11 @@ body {
 .input-box {
   display: inline-block;
   width: auto;
+  margin-left: 4px;
+  margin-right: 16px;
+}
+
+.input-label {
+  line-height: 30px;
+  margin-right: 6px;
 }
