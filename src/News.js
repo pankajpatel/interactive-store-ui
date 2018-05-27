@@ -91,7 +91,7 @@ class Product extends Component {
           className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
           <h1 className="h2">News</h1>
           <div className="btn-toolbar mb-2 mb-md-0">
-            <label className="input-label" for="limit">
+            <label className="input-label" htmlFor="limit">
               Limit:
             </label>
             <input
@@ -101,7 +101,7 @@ class Product extends Component {
               id="limit"
               type="number"
             />
-            <label className="input-label" for="query">
+            <label className="input-label" htmlFor="query">
               Query:
             </label>
             <input
