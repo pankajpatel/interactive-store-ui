@@ -132,3 +132,12 @@ body {
 .news-item .badge-vote {
   text-transform: capitalize;
 }
+.badge-likes {
+  border: 1px solid #aaa;
+  border-radius: 0.25em;
+  padding: 0.25em;
+  color: #e1245e;
+}
+.badge-likes img {
+
+}

@@ -5,7 +5,7 @@ class Product extends Component {
     return (
     <div className="card lead-product" style={style}>
       <div className="card-img-top hydrogen" style={{flex: '1 50%'}} >
-        <img src={require('./51sRAnhFLXL.jpg')} alt='' width="100%"/>
+        <img src={require('./img/51sRAnhFLXL.jpg')} alt='' width="100%"/>
       </div>
       <div className="card-body" style={{flex: '1 50%'}}>
         <h5 className="card-title">Playmobil 9218 Collectable Policeman and Burglar Duo Pack</h5>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import spinner from './spinner.svg';
+import spinner from './img/spinner.svg';
 import NewsButton from './NewsButton'
 const url = process.env.NODE_ENV === 'production'
   ? `https://media-ai-hackathon.herokuapp.com/news`

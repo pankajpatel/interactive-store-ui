@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { format } from 'date-fns';
+import heart from './img/heart.svg';
 const style = {};
 
 const RawHTML = ({children, className = ""}) => 
@@ -28,7 +29,9 @@ class NewsButton extends Component {
         </span> : ''}
 
         <a target="_blank" rel="noopener noreferrer" href={news.url} className="badge badge-secondary float-right">Source</a>
-        <span className={`badge badge-${badgeType} badge-vote`}>{news.sentiments.vote} <span className="badge badge-light">{news.sentiments.score}</span></span>
+        <span className={`badge badge-${badgeType} badge-vote`}>{news.sentiments.vote} <span className="badge badge-light">{news.sentiments.score}</span></span>&nbsp;
+        {
+          news.likes !== undefined ? <span className={`badge-likes`}><img style={{width: '0.8em'}} src={heart} alt="Likes"/> {news.likes}</span> : null}
       </button>
     );
   }
